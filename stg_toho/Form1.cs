@@ -25,6 +25,7 @@ namespace stg_toho
         private void timer1_Tick(object sender, EventArgs e)
         {
             time++;
+            jiki.UpdateGame();
             Invalidate();
         }
 
@@ -35,24 +36,14 @@ namespace stg_toho
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Up)
-            {
-                jiki.MoveUp();
-            }
-            if (e.KeyCode == Keys.Down)
-            {
-                jiki.MoveDown();
-            }
-            if (e.KeyCode == Keys.Left)
-            {
-                jiki.MoveLeft();
-            }
-            if (e.KeyCode == Keys.Right)
-            {
-                jiki.MoveRight();
-            }
+            jiki.Move(e);
+            Invalidate();
+        }
 
-
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            jiki.Stop(e);
+            Invalidate();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
