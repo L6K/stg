@@ -46,6 +46,7 @@ namespace stg_toho
             Invalidate();
         }
 
+
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             jiki.Draw(time,e);   
