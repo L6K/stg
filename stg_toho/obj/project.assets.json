@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\230327PM\\source\\repos\\stg_toho\\stg_toho\\stg_toho.csproj",
+      "projectUniqueName": "C:\\Users\\230327PM\\Documents\\stg_toho\\stg_toho\\stg_toho.csproj",
       "projectName": "stg_toho",
-      "projectPath": "C:\\Users\\230327PM\\source\\repos\\stg_toho\\stg_toho\\stg_toho.csproj",
+      "projectPath": "C:\\Users\\230327PM\\Documents\\stg_toho\\stg_toho\\stg_toho.csproj",
       "packagesPath": "C:\\Users\\230327PM\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\230327PM\\source\\repos\\stg_toho\\stg_toho\\obj\\",
+      "outputPath": "C:\\Users\\230327PM\\Documents\\stg_toho\\stg_toho\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\230327PM\\AppData\\Roaming\\NuGet\\NuGet.Config",

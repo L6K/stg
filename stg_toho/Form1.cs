@@ -20,6 +20,17 @@ namespace stg_toho
         public Form1()
         {
             InitializeComponent();
+            if (Properties.Settings.Default.FullScreen)
+            {
+                this.WindowState = FormWindowState.Normal;
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.Bounds = Screen.PrimaryScreen.Bounds;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Maximized;
+                this.FormBorderStyle = FormBorderStyle.Sizable;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
