@@ -29,36 +29,48 @@ namespace stg_toho
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            timer1 = new System.Windows.Forms.Timer(components);
+            EndGameButton = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 15;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            timer1.Enabled = true;
+            timer1.Interval = 15;
+            timer1.Tick += timer1_Tick;
+            // 
+            // EndGameButton
+            // 
+            EndGameButton.Location = new System.Drawing.Point(47, 81);
+            EndGameButton.Name = "EndGameButton";
+            EndGameButton.Size = new System.Drawing.Size(107, 23);
+            EndGameButton.TabIndex = 0;
+            EndGameButton.Text = "ゲームを終了する";
+            EndGameButton.UseVisualStyleBackColor = true;
+            EndGameButton.Click += button1_Click;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::stg_toho.Resource1.background;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.DoubleBuffered = true;
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackgroundImage = Resource1.background;
+            ClientSize = new System.Drawing.Size(800, 450);
+            Controls.Add(EndGameButton);
+            DoubleBuffered = true;
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
+            Paint += Form1_Paint;
+            KeyDown += Form1_KeyDown;
+            KeyUp += Form1_KeyUp;
+            ResumeLayout(false);
         }
 
         #endregion
 
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button EndGameButton;
     }
 }
 
