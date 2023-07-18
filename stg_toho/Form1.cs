@@ -12,14 +12,15 @@ namespace stg_toho
 {
     public partial class Form1 : Form
     {
-        
-        
-        int time = 0,m;
+
+
+        int time = 0, m;
         jiki jiki = new jiki();
 
         public Form1()
         {
             InitializeComponent();
+            EndGameButton.Visible = false;
             if (Properties.Settings.Default.FullScreen)
             {
                 this.WindowState = FormWindowState.Normal;
@@ -60,7 +61,23 @@ namespace stg_toho
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            jiki.Draw(time,e);   
+            jiki.Draw(time, e);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Application.Exit();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                EndGameButton.Visible = true;
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }
