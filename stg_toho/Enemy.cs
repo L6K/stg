@@ -8,6 +8,11 @@ namespace stg_toho
 {
     internal class Enemy
     {
-        private int speed;
+        public void Move(int a)
+        {
+            //aの値
+            //0:上、1:下、2:右、3:左
+
+        }
     }
 }
