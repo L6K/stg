@@ -33,6 +33,7 @@ namespace stg_toho
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.EndGameButton = new System.Windows.Forms.Button();
             this.EnemyAppearanceTime = new System.Windows.Forms.Timer(this.components);
+            this.ChangeDirection = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // timer1
@@ -57,6 +58,12 @@ namespace stg_toho
             this.EnemyAppearanceTime.Interval = 5000;
             this.EnemyAppearanceTime.Tick += new System.EventHandler(this.EnemyAppearanceTime_Tick);
             // 
+            // ChangeDirection
+            // 
+            this.ChangeDirection.Enabled = true;
+            this.ChangeDirection.Interval = 300;
+            this.ChangeDirection.Tick += new System.EventHandler(this.ChangeDirection_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -67,6 +74,7 @@ namespace stg_toho
             this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load_1);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
@@ -78,6 +86,7 @@ namespace stg_toho
         private System.Windows.Forms.Button EndGameButton;
         public System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer EnemyAppearanceTime;
+        private System.Windows.Forms.Timer ChangeDirection;
     }
 }
 

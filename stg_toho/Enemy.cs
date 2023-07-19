@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace stg_toho
 {
-    internal class Enemy
+    public class Enemy
     {
         private int speed=5;
         private Point position;
-        Image image = Resource1.Enem
+        Image image = Resource1.enemy;
         public Enemy()
         {
             position = new Point(0, 0);
@@ -23,6 +23,7 @@ namespace stg_toho
         {
             //aの値
             //0:上、1:下、2:右、3:左
+            a %= 4;
             switch(a)
             {
                 case 0:
@@ -69,9 +70,37 @@ namespace stg_toho
             }
         }
 
-        public void Draw(int time, PaintEventArgs e)
+        public void Draw(PaintEventArgs e)
         {
-            e.Graphics.DrawImage(image, new Rectangle(position.X, position.Y, 50, 50), trimRects[n, m], GraphicsUnit.Pixel);
+            e.Graphics.DrawImage(image,new Rectangle(this.position.X,this.position.Y,50,50));
         }
+
+        public void Acceleration()
+        {
+            this.speed += 10;
+        }
+    }
+
+    public class EnemyManager
+    {
+        private List<Enemy> enemies;
+
+        public EnemyManager()
+        {
+            enemies = new List<Enemy>();
+        }
+
+        public void AddEnemy(Enemy enemy)
+        {
+            enemies.Add(enemy);
+        }
+
+        public void RemoveEnemy(Enemy enemy)
+        {
+            enemies.Remove(enemy);
+        }
+
+        // 他のenemy管理に関するメソッドを実装する
+        // ...
     }
 }
