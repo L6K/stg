@@ -29,48 +29,55 @@ namespace stg_toho
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            timer1 = new System.Windows.Forms.Timer(components);
-            EndGameButton = new System.Windows.Forms.Button();
-            SuspendLayout();
+            this.components = new System.ComponentModel.Container();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.EndGameButton = new System.Windows.Forms.Button();
+            this.EnemyAppearanceTime = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
             // 
             // timer1
             // 
-            timer1.Enabled = true;
-            timer1.Interval = 15;
-            timer1.Tick += timer1_Tick;
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 15;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // EndGameButton
             // 
-            EndGameButton.Location = new System.Drawing.Point(47, 81);
-            EndGameButton.Name = "EndGameButton";
-            EndGameButton.Size = new System.Drawing.Size(107, 23);
-            EndGameButton.TabIndex = 0;
-            EndGameButton.Text = "ゲームを終了する";
-            EndGameButton.UseVisualStyleBackColor = true;
-            EndGameButton.Click += button1_Click;
+            this.EndGameButton.Location = new System.Drawing.Point(47, 81);
+            this.EndGameButton.Name = "EndGameButton";
+            this.EndGameButton.Size = new System.Drawing.Size(107, 23);
+            this.EndGameButton.TabIndex = 0;
+            this.EndGameButton.Text = "ゲームを終了する";
+            this.EndGameButton.UseVisualStyleBackColor = true;
+            this.EndGameButton.Click += new System.EventHandler(this.EndGameButton_Click);
+            // 
+            // EnemyAppearanceTime
+            // 
+            this.EnemyAppearanceTime.Enabled = true;
+            this.EnemyAppearanceTime.Interval = 5000;
+            this.EnemyAppearanceTime.Tick += new System.EventHandler(this.EnemyAppearanceTime_Tick);
             // 
             // Form1
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            BackgroundImage = Resource1.background;
-            ClientSize = new System.Drawing.Size(800, 450);
-            Controls.Add(EndGameButton);
-            DoubleBuffered = true;
-            Name = "Form1";
-            Text = "Form1";
-            Load += Form1_Load;
-            Paint += Form1_Paint;
-            KeyDown += Form1_KeyDown;
-            KeyUp += Form1_KeyUp;
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::stg_toho.Resource1.background;
+            this.ClientSize = new System.Drawing.Size(784, 411);
+            this.Controls.Add(this.EndGameButton);
+            this.DoubleBuffered = true;
+            this.Name = "Form1";
+            this.Text = "Form1";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
-
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button EndGameButton;
+        public System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer EnemyAppearanceTime;
     }
 }
 

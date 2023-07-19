@@ -13,9 +13,9 @@ namespace stg_toho
     public partial class Form1 : Form
     {
 
-
+        Size formSize;
+        jiki jiki;
         int time = 0, m;
-        jiki jiki = new jiki();
 
         public Form1()
         {
@@ -26,18 +26,24 @@ namespace stg_toho
                 this.WindowState = FormWindowState.Normal;
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.Bounds = Screen.PrimaryScreen.Bounds;
+                formSize = this.Size;
+
+
             }
             else
             {
                 this.WindowState = FormWindowState.Maximized;
                 this.FormBorderStyle = FormBorderStyle.Sizable;
+                formSize = this.Size;
             }
+            jiki = new jiki(formSize.Width/2, formSize.Height/2);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             time++;
             jiki.UpdateGame();
+            jiki.LimitOfRange(this.Right, this.Bottom);
             Invalidate();
         }
 
@@ -64,10 +70,17 @@ namespace stg_toho
             jiki.Draw(time, e);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void EndGameButton_Click(object sender, EventArgs e)
         {
             this.Close();
             Application.Exit();
+
+        }
+
+        private void EnemyAppearanceTime_Tick(object sender, EventArgs e)
+        {
+
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
