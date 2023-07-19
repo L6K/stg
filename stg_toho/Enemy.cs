@@ -14,12 +14,16 @@ namespace stg_toho
     {
         private int speed=5;
         private Point position;
+        private Size size;
         Image image = Resource1.enemy;
-        public Enemy()
+        int a = 50;
+        public Enemy(int a)
         {
+            this.a = a;
             position = new Point(0, 0);
+            size = new Size(a + 50, a + 50);
         }
-        public void Move(int a)
+        public void Move(int a,int right,int bottom)
         {
             //aの値
             //0:上、1:下、2:右、3:左
@@ -27,21 +31,37 @@ namespace stg_toho
             switch(a)
             {
                 case 0:
+                    if (this.position.Y < 0)
+                    {
+                        this.position.Y += speed;
+                    }
                     this.position.Y -= speed;
 
                     break;
 
                 case 1:
+                    if (this.position.Y > (bottom-50))
+                    {
+                        this.position.Y -= speed;
+                    }
                     this.position.Y += speed;
 
                     break;
 
                 case 2:
+                    if (this.position.X > (right - 500))
+                    {
+                        this.position.X -= speed;
+                    }
                     this.position.X += speed;
 
                     break;
 
                 case 3:
+                    if (this.position.X < 0)
+                    {
+                        this.position.X += speed;
+                    }
                     this.position.X -= speed;
 
                     break;
@@ -72,14 +92,35 @@ namespace stg_toho
 
         public void Draw(PaintEventArgs e)
         {
-            e.Graphics.DrawImage(image,new Rectangle(this.position.X,this.position.Y,50,50));
+            if (this.a > 100)
+            {
+                this.a = 100;
+            }
+            e.Graphics.DrawImage(image,new Rectangle(this.position.X,this.position.Y,this.size.Width,this.size.Width));
         }
 
         public void Acceleration()
         {
             this.speed += 10;
         }
+
+        public int getSpeed()
+        {
+            return this.speed;
+        }
+
+        public Point getPosi()
+        {
+            return this.position;
+        }
+        public Size getSize()
+        {
+            return this.size;
+        }
+
     }
+
+
 
     public class EnemyManager
     {

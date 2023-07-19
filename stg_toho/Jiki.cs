@@ -14,6 +14,7 @@ namespace stg_toho
     {
         private int speed,m=0;
         private Point position;
+        private Size size;
         Image image = Resource1.Minoriko;
         Rectangle[,] trimRects = new Rectangle[4, 3];
         private bool isMovingUp = false;
@@ -25,6 +26,7 @@ namespace stg_toho
         {
             speed = 10;
             position = new Point(x, y);
+            size = new Size(50, 50);
             int width = image.Width / trimRects.GetLength(0), height = image.Height / trimRects.GetLength(1);
             for (int i = 0; i < trimRects.GetLength(0); i++) for (int j = 0; j < trimRects.GetLength(1); j++)
                     trimRects[i, j] = new Rectangle(i * width, j * height, width, height);
@@ -120,13 +122,27 @@ namespace stg_toho
             }
         }
 
+        public Point getPosi()
+        {
+            return this.position;
+        }
+        public Size getSize() 
+        {
+            return this.size;
+        }
+
+        public Point getMidPosi()
+        {
+            return new Point(this.position.X + (this.size.Width / 2), this.position.Y + (this.size.Height / 2));
+        }
+
 
 
 
         public void Draw(int time,PaintEventArgs e)
         {
             var n = (time / 10) % trimRects.GetLength(0);
-            e.Graphics.DrawImage(image, new Rectangle(position.X, position.Y, 50, 50), trimRects[n, m], GraphicsUnit.Pixel);
+            e.Graphics.DrawImage(image, new Rectangle(position.X, position.Y, size.Width, size.Height), trimRects[n, m], GraphicsUnit.Pixel);
         }
 
 

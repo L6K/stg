@@ -17,10 +17,12 @@ namespace stg_toho
         Size formSize;
         jiki jiki;
         List<Enemy> enemies = new List<Enemy>();
-        Enemy enemy = new Enemy();
+        Enemy enemy = new Enemy(0);
         int time = 0;
         Random random = new Random();
         int rn = 0;
+        int mag=5;
+        int index = 0;
 
         public Form1()
         {
@@ -96,11 +98,6 @@ namespace stg_toho
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
-        private void Form1_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
         //Timer系
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -111,8 +108,8 @@ namespace stg_toho
             jiki.LimitOfRange(this.Right, this.Bottom);
             for(int i = 0; i < enemies.Count; i++)
             {
-                enemies[i].Move(rn+i);
-                enemies[i].LimitOfRange(this.Right, this.Bottom);
+                enemies[i].Move(rn+i, this.Right, this.Bottom);
+                atariHantei(enemies[i], jiki);
             }
 
             Invalidate();
@@ -120,18 +117,45 @@ namespace stg_toho
 
         private void EnemyAppearanceTime_Tick(object sender, EventArgs e)
         {
-            for(int i=0; i < enemies.Count; i++)
+            index++;
+            for (int i=0; i < enemies.Count; i++)
             {
-                enemies[i].Acceleration();
+                if (enemies[i].getSpeed() < 50)
+                {
+                    enemies[i].Acceleration();
+                }
+                
             }
-            Enemy enmy = new Enemy();
+            if (index > 5) //表示させる敵の上限
+            {
+                enemies.RemoveAt(0);
+            }
+            mag+=10;
+            Enemy enmy = new Enemy(mag);
             enemies.Add(enmy);
             
 
         }
         private void ChangeDirection_Tick(object sender, EventArgs e)
         {
-            //rn = random.Next(4);
+            rn = random.Next(4);
+        }
+
+
+        private void atariHantei(Enemy e,jiki j)
+        {
+            Point eP = e.getPosi();
+            Size eS = e.getSize();
+            Point jP = j.getMidPosi();
+            if (eP.X <= jP.X && jP.X <= eP.X + eS.Width && eP.Y <= jP.Y && jP.Y <= eP.Y + eS.Height)
+            {
+                label1.Visible = true;
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
